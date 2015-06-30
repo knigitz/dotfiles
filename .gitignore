@@ -1,0 +1,6 @@
+chromium/
+gtk-2.0/
+.git/
+archey3.cfg
+*.log
+*.save

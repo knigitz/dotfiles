@@ -1,0 +1,50 @@
+urxvt*.perl-lib: /usr/lib/urxvt/perl
+urxvt*.perl-ext-common: default,matcher,clipboard
+urxvt*.perl-matcher: 1
+urxvt*.matcher-button: 3
+urxvt*.url-launcher: /usr/bin/chromium
+!urxvt*.matcher.button: 1
+!urxvt*.matcher.pattern.1: \\bwww\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]
+
+! letter spacing
+urxvt*.letterSpace: -1
+
+urxvt*.dynamicColors: on
+urxvt*.urgentOnBell: true
+
+! cursor
+urxvt*.cursorBlink: true
+urxvt*.cursorUnderline: 1
+
+! scrollbar
+urxvt*.scrollBar: true
+urxvt*.scrollBar_right: true
+urxvt*.scrollBar_floating: true
+urxvt*.scrollstyle: plain
+urxvt*.scrollColor: #efefef
+urxvt*.troughColor: #ffffff
+urxvt*.thickness: 1
+
+! border
+urxvt*.borderLess: false
+urxvt*.internalBorder: 5
+urxvt*.externalBorder: 0
+
+! window fading
+!urxvt*.fading: 1 
+!urxvt*.fadeColor: #ffffff
+
+! true transparency
+urxvt*.depth: 32
+urxvt*.background: [75]#ffffff 
+
+! native transparency
+!urxvt*.transparent: true
+!urxvt*.shading: 175
+
+! font
+urxvt*.font: xft:Inconsolata:size=9:antialias=true
+urxvt*.boldFont: xft:Inconsolata:style=bold:size=9:antialias=true
+urxvt*.italicFont: xft:Inconsolata:style=italic:size=9:antialias=true
+urxvt*.boldItalicFont: xft:Inconsolata:style=bolditalic:size=9:antialias=true
+
