@@ -18,21 +18,8 @@ bspc control --subscribe > "$PANEL_FIFO" &
 xtitle -sf 'T%s' > "$PANEL_FIFO" &
 
 panel_battery() {
-	batteryStatus=$(battery -f '%s')
 	batteryLevel=$(battery -f '%d')
-	if [ "$batteryLevel" -gt 60 ]
-	then
-		batteryLevel="%{F#ff859900}$batteryLevel%%{F-}"
-	elif [ "$batteryLevel" -gt 25 ]
-	then
-		batteryLevel="%{F#ffb58900}$batteryLevel%%{F-}"
-	elif [ "$batteryLevel" -gt 15 ]
-	then
-		batteryLevel="%{F#ffdc322f}$batteryLevel%%{F-}"
-	else
-		batteryLevel="%{F#fff3f3f3}%{B#ffdc322f}$batteryLevel%%{F-}%{B-}"
-	fi
-	echo "$batteryLevel"
+	echo "$batteryLevel%"
 }
 
 panel_clock() {
@@ -42,7 +29,7 @@ panel_clock() {
 
 # loop to refresh system status
 while true; do
-	echo "S" $(panel_battery) $(panel_clock) > "$PANEL_FIFO" &
+	echo "S" "%{B#ff93a1a1}%{F#fff3f3f3} $(panel_battery) %{F-}%{B-}%{B#ff657b83}%{F#fff3f3f3} $(panel_clock) %{F-}%{B-}" > "$PANEL_FIFO" &
 	sleep .5s
 done &
 

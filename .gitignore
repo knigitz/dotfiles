@@ -1,6 +1,7 @@
 chromium/
 gtk-2.0/
 menus/
+dconf/
 .git/
 archey3.cfg
 *.log
