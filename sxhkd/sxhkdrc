@@ -81,7 +81,7 @@ super + Return
 	urxvt
 
 super + space
-	dmenu_run -q -h 25 -fn "Inconsolata-12:normal" -nb "#f3f3f3" -nf "#333333" -dim .5 -p ">"
+	dmenu_run -q -h 25 -fn "Inconsolata-12:normal" -nb "#f3f3f3" -nf "#657b83" -sb "#657b83" -sf "#f3f3f3" -dim .5 -p ">" 
 
 # make sxhkd reload its configuration files:
 super + Escape
