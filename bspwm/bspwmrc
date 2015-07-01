@@ -20,7 +20,7 @@ bspc config presel_border_color  "#9a875f"
 bspc config urgent_border_color  "#9f7155"
 bspc config focused_locked_border_color "#9a875f"
 
-bspc monitor -d main www term code misc
+bspc monitor -d main www term chat code misc
 
 bspc rule -a Chromium desktop=^2
 bspc rule -a mplayer2 floating=on
