@@ -10,22 +10,40 @@ trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 [ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
 mkfifo "$PANEL_FIFO"
 
+. panel_config
+. panel_colors
+
 bspc config top_padding $PANEL_HEIGHT
 bspc control --subscribe > "$PANEL_FIFO" &
 xtitle -sf 'T%s' > "$PANEL_FIFO" &
 
-function panel_battery() {
-	echo $(battery -f '%d')%;
+panel_battery() {
+	batteryStatus=$(battery -f '%s')
+	batteryPercent=$(battery -f '%d')
+	if [ "$batteryStatus" == "Unknown" ]
+	then
+		batteryLevel='Charging'
+	elif [ "$batteryPercent" -gt 60 ]
+	then
+		batteryLevel="%{F#ff859900}$batteryPercent%%{F-}"
+	elif [ "$batteryPercent" -gt 25 ]
+	then
+		batteryLevel="%{F#ffb58900}$batteryPercent%%{F-}"
+	elif [ "$batteryPercent" -gt 15 ]
+	then
+		batteryLevel="%{F#ffdc322f}$batteryPercent%%{F-}"
+	else
+		batteryLevel="%{F#fff3f3f3}%{B#ffdc322f}$batteryPercent%%{F-}%{B-}"
+	fi
+	echo "$batteryLevel"
 }
 
-function panel_clock() {
-	echo $(clock -f '%a %d %I:%M');
+panel_clock() {
+	echo $(date +"%a %I:%M %p")
+
 }
 
-. panel_config
-. panel_colors
-
-# Loop to check time, battery and volume statuses
+# loop to refresh system status
 while true; do
 	echo "S" $(panel_battery) $(panel_clock) > "$PANEL_FIFO" &
 	sleep .5s
