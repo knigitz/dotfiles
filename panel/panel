@@ -10,11 +10,26 @@ trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 [ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
 mkfifo "$PANEL_FIFO"
 
+bspc config top_padding $PANEL_HEIGHT
 bspc control --subscribe > "$PANEL_FIFO" &
 xtitle -sf 'T%s' > "$PANEL_FIFO" &
-clock -sf 'S%a %H:%M' > "$PANEL_FIFO" &
 
+function panel_battery() {
+	echo $(battery -f '%d')%;
+}
+
+function panel_clock() {
+	echo $(clock -f '%a %d %I:%M');
+}
+
+. panel_config
 . panel_colors
+
+# Loop to check time, battery and volume statuses
+while true; do
+	echo "S" $(panel_battery) $(panel_clock) > "$PANEL_FIFO" &
+	sleep .5s
+done &
 
 cat "$PANEL_FIFO" \
 	| panel_bar \
