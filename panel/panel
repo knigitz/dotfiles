@@ -19,27 +19,24 @@ xtitle -sf 'T%s' > "$PANEL_FIFO" &
 
 panel_battery() {
 	batteryStatus=$(battery -f '%s')
-	batteryPercent=$(battery -f '%d')
-	if [ "$batteryStatus" == "Unknown" ]
+	batteryLevel=$(battery -f '%d')
+	if [ "$batteryLevel" -gt 60 ]
 	then
-		batteryLevel='Charging'
-	elif [ "$batteryPercent" -gt 60 ]
+		batteryLevel="%{F#ff859900}$batteryLevel%%{F-}"
+	elif [ "$batteryLevel" -gt 25 ]
 	then
-		batteryLevel="%{F#ff859900}$batteryPercent%%{F-}"
-	elif [ "$batteryPercent" -gt 25 ]
+		batteryLevel="%{F#ffb58900}$batteryLevel%%{F-}"
+	elif [ "$batteryLevel" -gt 15 ]
 	then
-		batteryLevel="%{F#ffb58900}$batteryPercent%%{F-}"
-	elif [ "$batteryPercent" -gt 15 ]
-	then
-		batteryLevel="%{F#ffdc322f}$batteryPercent%%{F-}"
+		batteryLevel="%{F#ffdc322f}$batteryLevel%%{F-}"
 	else
-		batteryLevel="%{F#fff3f3f3}%{B#ffdc322f}$batteryPercent%%{F-}%{B-}"
+		batteryLevel="%{F#fff3f3f3}%{B#ffdc322f}$batteryLevel%%{F-}%{B-}"
 	fi
 	echo "$batteryLevel"
 }
 
 panel_clock() {
-	echo $(date +"%a %I:%M %p")
+	echo $(date +"%a %-I:%M %p")
 
 }
 

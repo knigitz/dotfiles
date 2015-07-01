@@ -61,10 +61,10 @@ while read -r line ; do
 						# urgent desktop
 						wm_infos="${wm_infos}%{F$COLOR_URGENT_FG}%{B$COLOR_URGENT_BG} ${name} %{B-}%{F-}"
 						;;
-					L*)
+					#L*)
 						# layout
-						wm_infos="$wm_infos  %{F$COLOR_LAYOUT_FG}%{B$COLOR_LAYOUT_BG} ${name} %{B-}%{F-}"
-						;;
+						#wm_infos="$wm_infos  %{F$COLOR_LAYOUT_FG}%{B$COLOR_LAYOUT_BG} ${name} %{B-}%{F-}"
+						#;;
 				esac
 				shift
 			done
