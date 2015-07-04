@@ -36,7 +36,7 @@ urxvt*.externalBorder: 0
 
 ! true transparency
 urxvt*.depth: 32
-urxvt*.background: [75]#ffffff 
+urxvt*.background: [75]#f3f3f3
 
 ! native transparency
 !urxvt*.transparent: true

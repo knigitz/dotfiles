@@ -1,0 +1,56 @@
+#!/bin/sh
+
+source $XDG_CONFIG_HOME/panel/config
+source $XDG_CONFIG_HOME/panel/colors
+
+panel_workspaces() {
+	ws=""
+	IFS=':' read -a array <<< $(bspc control --get-status)
+	for item in "${array[@]}"
+	do
+		name=${item#?}
+		case $item in
+			O*) # focused occupied desktop
+				ws="${ws}%{R} ${name} %{R}"
+			;;
+			F*) # focused free desktop
+				ws="${ws}%{R} ${name} %{R}"
+			;;
+			U*) # focused urgent desktop
+				ws="${ws}%{R} ${name} %{R}"
+			;;
+			o*) # occupied desktop
+				ws="${ws} ${name} "
+			;;
+			f*) # free desktop
+				ws="${ws} ${name} "
+			;;
+			u*) # urgent desktop
+				ws="${ws} {$name} "
+			;;
+		esac
+		shift
+	done
+	echo "${ws}"
+}
+
+panel_title() {
+	echo $(xtitle)
+}
+
+panel_battery() {
+	echo "%{B#ff93a1a1}%{F#fff3f3f3} $(battery -f '%d')% %{F-}%{B-}"
+}
+
+panel_clock() {
+	echo "%{B#ff657b83}%{F#fff3f3f3} $(date +'%a %-I:%M %p') %{F-}%{B-}"
+}
+
+# print to panel
+
+while [ "$(pidof xinit)" != "" ]; do
+	echo "%{l}$(panel_workspaces)" \
+			 "%{c}$(panel_title)" \
+			 "%{r}$(panel_battery)$(panel_clock)"
+	sleep 0.1s
+done

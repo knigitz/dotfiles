@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 
 if [ $(pgrep -cx panel) -gt 1 ] ; then
 	printf "%s\n" "The panel is already running." >&2
@@ -7,38 +7,13 @@ fi
 
 trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 
-[ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
-mkfifo "$PANEL_FIFO"
+source $XDG_CONFIG_HOME/panel/config
+source $XDG_CONFIG_HOME/panel/colors
 
-. panel_config
-. panel_colors
-
-bspc config top_padding $PANEL_HEIGHT
-bspc control --subscribe > "$PANEL_FIFO" &
-xtitle -sf 'T%s' > "$PANEL_FIFO" &
-
-panel_battery() {
-	batteryLevel=$(battery -f '%d')
-	echo "$batteryLevel%"
-}
-
-panel_clock() {
-	echo $(date +"%a %-I:%M %p")
-
-}
-
-# loop to refresh system status
-while true; do
-	echo "S" "%{B#ff93a1a1}%{F#fff3f3f3} $(panel_battery) %{F-}%{B-}%{B#ff657b83}%{F#fff3f3f3} $(panel_clock) %{F-}%{B-}" > "$PANEL_FIFO" &
-	sleep .5s
-done &
-
-cat "$PANEL_FIFO" \
-	| panel_bar \
-	| lemonbar \
-		-g "$PANEL_HEIGHT" \
-		-u "$PANEL_UNDERLINE" \
-		-f "$PANEL_FONT" \
-		-F "$COLOR_FOREGROUND" \
-		-B "$COLOR_BACKGROUND" &
+$XDG_CONFIG_HOME/panel/top | lemonbar \
+	-g "$PANEL_HEIGHT" \
+	-u "$PANEL_UNDERLINE" \
+	-f "$PANEL_FONT" \
+	-F "$COLOR_FOREGROUND" \
+	-B "$COLOR_BACKGROUND" & 
 wait
