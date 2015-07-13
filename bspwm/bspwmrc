@@ -35,6 +35,8 @@ bspc rule -a urxvt floating=off
 bspc rule -a Chromium desktop=^2
 bspc rule -a feh floating=on
 
-# autostart
+# set background
 feh --bg-scale ~/media/wallpapers/current.jpg
-panel &
+
+# autostart
+$XDG_CONFIG_HOME/panel/panel

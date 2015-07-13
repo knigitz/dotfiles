@@ -10,22 +10,22 @@ panel_workspaces() {
 	do
 		name=${item#?}
 		case $item in
-			O*) # focused occupied desktop
+			O*) # focused occupied
 				ws="${ws}%{R} ${name} %{R}"
 			;;
-			F*) # focused free desktop
+			F*) # focused free
 				ws="${ws}%{R} ${name} %{R}"
 			;;
-			U*) # focused urgent desktop
+			U*) # focused urgent
 				ws="${ws}%{R} ${name} %{R}"
 			;;
-			o*) # occupied desktop
+			o*) # occupied
 				ws="${ws} ${name} "
 			;;
-			f*) # free desktop
+			f*) # free
 				ws="${ws} ${name} "
 			;;
-			u*) # urgent desktop
+			u*) # urgent
 				ws="${ws} {$name} "
 			;;
 		esac

@@ -5,5 +5,6 @@ dconf/
 ranger/
 .git/
 archey3.cfg
+QtProject.conf
 *.log
 *.save

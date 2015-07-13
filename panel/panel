@@ -16,4 +16,5 @@ $XDG_CONFIG_HOME/panel/top | lemonbar \
 	-f "$PANEL_FONT" \
 	-F "$COLOR_FOREGROUND" \
 	-B "$COLOR_BACKGROUND" & 
+
 wait
