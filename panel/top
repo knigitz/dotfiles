@@ -39,7 +39,11 @@ panel_title() {
 }
 
 panel_battery() {
-	echo "%{B#ff93a1a1}%{F#fff3f3f3} $(battery -f '%d')% %{F-}%{B-}"
+	echo "%{B#ff657b83}%{F#fff3f3f3} $(battery -f '%d')% %{F-}%{B-}"
+}
+
+panel_hostname() {
+	echo "%{B#ff93a1a1}%{F#fff3f3f3} $(hostname) %{F-}%{B-}"
 }
 
 panel_clock() {
@@ -51,6 +55,6 @@ panel_clock() {
 while [ "$(pidof xinit)" != "" ]; do
 	echo "%{l}$(panel_workspaces)" \
 			 "%{c}$(panel_title)" \
-			 "%{r}$(panel_battery)$(panel_clock)"
+			 "%{r}$(panel_battery)$(panel_hostname)$(panel_clock)"
 	sleep 0.1s
 done

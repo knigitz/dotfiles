@@ -34,6 +34,7 @@ bspc config focused_locked_border_color	"#f3f3f3"
 bspc rule -a urxvt floating=off
 bspc rule -a Chromium desktop=^2
 bspc rule -a feh floating=on
+bspc rule -a nemo floating=on
 
 # set background
 feh --bg-scale ~/media/wallpapers/current.jpg

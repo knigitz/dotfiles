@@ -3,6 +3,7 @@ gtk-2.0/
 menus/
 dconf/
 ranger/
+nemo/
 .git/
 archey3.cfg
 QtProject.conf
