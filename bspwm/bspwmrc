@@ -37,7 +37,7 @@ bspc rule -a feh floating=on
 bspc rule -a nemo floating=on
 
 # set background
-feh --bg-scale ~/media/wallpapers/current.jpg
+feh --bg-scale ~/media/wallpapers/archlinux.png
 
 # autostart
 $XDG_CONFIG_HOME/panel/panel

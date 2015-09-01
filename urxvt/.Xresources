@@ -17,7 +17,7 @@ urxvt*.cursorBlink: true
 urxvt*.cursorUnderline: 1
 
 ! scrollbar
-urxvt*.scrollBar: true
+urxvt*.scrollBar: false
 urxvt*.scrollBar_right: true
 urxvt*.scrollBar_floating: true
 urxvt*.scrollstyle: plain
@@ -32,11 +32,11 @@ urxvt*.externalBorder: 0
 
 ! window fading
 !urxvt*.fading: 1 
-!urxvt*.fadeColor: #ffffff
+!urxvt*.fadeColor: #000000
 
 ! true transparency
 urxvt*.depth: 32
-urxvt*.background: [75]#f3f3f3
+urxvt*.background: [75]#333333
 
 ! native transparency
 !urxvt*.transparent: true

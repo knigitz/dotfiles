@@ -84,7 +84,7 @@ super + e
 	nemo
 
 super + space
-	dmenu_run -q -h 25 -fn "Inconsolata-12:normal" -nb "#f3f3f3" -nf "#657b83" -sb "#657b83" -sf "#f3f3f3" -dim .5 -o .9 -p ">" 
+	dmenu_run -q -h 25 -fn "Inconsolata-12:normal" -nb "#333333" -nf "#f3f3f3" -sb "#000000" -sf "#f3f3f3" -dim .5 -o .9 -p ">" 
 
 # make sxhkd reload its configuration files:
 super + Escape

@@ -11,22 +11,22 @@ panel_workspaces() {
 		name=${item#?}
 		case $item in
 			O*) # focused occupied
-				ws="${ws}%{R} ${name} %{R}"
+				ws="${ws}%{B#cc000000}%{F#ffc3c3c3} ${name} %{F-}%{B-}"
 			;;
 			F*) # focused free
-				ws="${ws}%{R} ${name} %{R}"
+				ws="${ws}%{B#cc000000}%{F#ffc3c3c3} ${name} %{F-}%{B-}"
 			;;
 			U*) # focused urgent
-				ws="${ws}%{R} ${name} %{R}"
+				ws="${ws}%{B#cc000000}%{F#ffff4500} ${name} %{F-}%{B-}"
 			;;
 			o*) # occupied
-				ws="${ws} ${name} "
+				ws="${ws}%{B#cc222222}%{F#ffc3c3c3} ${name} %{F-}%{B-}"
 			;;
 			f*) # free
-				ws="${ws} ${name} "
+				ws="${ws}%{F#ffc3c3c3} ${name} %{F-}"
 			;;
 			u*) # urgent
-				ws="${ws} {$name} "
+				ws="${ws}%{F#ffff4500} ${name} %{F-}"
 			;;
 		esac
 		shift
@@ -39,15 +39,15 @@ panel_title() {
 }
 
 panel_battery() {
-	echo "%{B#ff657b83}%{F#fff3f3f3} $(battery -f '%d')% %{F-}%{B-}"
+	echo "%{B#cc222222}%{F#ffc3c3c3} $(battery -f '%d')% %{F-}%{B-}"
 }
 
 panel_hostname() {
-	echo "%{B#ff93a1a1}%{F#fff3f3f3} $(hostname) %{F-}%{B-}"
+	echo "%{B#cc111111}%{F#ffc3c3c3} $(hostname) %{F-}%{B-}"
 }
 
 panel_clock() {
-	echo "%{B#ff657b83}%{F#fff3f3f3} $(date +'%a %-I:%M %p') %{F-}%{B-}"
+	echo "%{B#cc000000}%{F#ffc3c3c3} $(date +'%a %-I:%M %p') %{F-}%{B-}"
 }
 
 # print to panel
